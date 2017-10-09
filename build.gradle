@@ -1,0 +1,29 @@
+group 'com.github.aesteve'
+version '0.1-SNAPSHOT'
+
+apply plugin: 'scala'
+
+buildscript {
+    ext.scala_major = '2.12'
+    ext.scala_minor = '2'
+    ext.scala_version = "$scala_major.$scala_minor"
+}
+
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.scala-lang:scala-library:$scala_version"
+    compile "io.vertx:vertx-web-client-scala_2.12:3.4.2"
+    compile 'hu.supercluster:overpasser:0.2.2'
+    compile 'hu.supercluster:overpasser-retrofit-adapter:0.2.2'
+    compile "com.fasterxml.jackson.module:jackson-module-scala_$scala_major:2.9.1"
+    testCompile "org.scalatest:scalatest_$scala_major:3.0.4"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2.1'
+}
