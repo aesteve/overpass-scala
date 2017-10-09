@@ -11,6 +11,8 @@ import com.github.aesteve.overpass.results.OsmType.OsmType
 case class Tags(
   `type`: String,
   amenity: String,
+  building: String,
+  @JsonProperty("building:levels") buildingLevels: String,
   name: String,
   phone: String,
   @JsonProperty("contact:email") contactEmail: String,
@@ -24,7 +26,11 @@ case class Tags(
   @JsonProperty("opening_hours") openingHours: String,
   @JsonProperty("internet_access") internetAccess: String,
   fee: String,
-  operator: String
+  operator: String,
+  source: String,
+  capacity: String,
+  parking: String,
+  supervised: String
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -66,5 +72,10 @@ case class Element(
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-case class OverpassQueryResult(elements: List[Element])
+case class OverpassQueryResult(
+  version: String,
+  generator: String,
+  // TODO osm3s
+  elements: List[Element]
+)
 
